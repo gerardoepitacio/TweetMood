@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_margin="5dp">
+
+    <TextView
+            android:id="@+id/tvTweetContent"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit."
+
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

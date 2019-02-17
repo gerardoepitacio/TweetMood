@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        >
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:theme="@style/AppTheme.LinearProgress"
+            android:maxWidth="50dp"
+            />
+
+        <TextView
+            android:id="@+id/loaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorDarkGray"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textAlignment="center"
+            android:text="@string/msg_searching_tweets"
+            />
+    </LinearLayout>
+</RelativeLayout>

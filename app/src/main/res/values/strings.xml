@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Tweet Mood</string>
+    <string name="twitter_username">Twitter username</string>
+    <string name="search_tweets">Search Tweets</string>
+    <string name="allowed_characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_</string>
+    <string name="msg_introduce_username">Please introduce a valid Twitter username</string>
+    <string name="msg_searching_tweets">Searching tweets for @username</string>
+    <string name="most_recent_tweets_by_username">Most recent Tweets by @username</string>
 </resources>

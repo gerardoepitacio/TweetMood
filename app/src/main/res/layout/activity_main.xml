@@ -1,19 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <import type="mx.fidisohl.tweetmood.utils.StringUtils"/>
+        <variable name="vm" type="mx.fidisohl.tweetmood.ui.main.MainViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent" android:layout_height="match_parent"
+        >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintTop_toTopOf="parent"
+            >
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                >
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/mainEditTextStyle"
+                            android:hint="@string/twitter_username"
+                            android:maxLength="15"
+                            android:inputType="textNoSuggestions"
+                            android:text="@={vm.username}"
+                            android:digits="@string/allowed_characters"
+                            android:textAllCaps="false"
+                    />
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                        android:id="@+id/searchButton"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/search_tweets"
+                        android:enabled="@{StringUtils.isNotNullOrEmpty(vm.username)}"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutUsername"
+                />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutTop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+            >
+                <TextView
+                        android:id="@+id/tvMsg1"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/most_recent_tweets_by_username"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/colorDarkGray"
+                        app:layout_constraintTop_toTopOf="parent"
+                />
+
+                <ImageView
+                        android:id="@+id/layoutSeparator"
+                        android:layout_width="match_parent" android:layout_height="1dp"
+                        android:src="@drawable/separator"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMsg1"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvUserTweets"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="20dp"
+                        tools:listitem="@layout/item_tweet"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutSeparator"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutMessages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/rvUserTweets"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:padding="8dp"
+                        android:visibility="gone"
+                        tools:visibility="gone">
+
+                    <ImageView
+                            android:id="@+id/imgInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@android:drawable/ic_dialog_info"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:tint="@color/colorDarkGray"/>
+                    <TextView
+                            android:id="@+id/tvNotData"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:text="@string/msg_introduce_username"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            app:layout_constraintTop_toBottomOf="@+id/imgInfo"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+                android:id="@+id/layoutLoader"
+                layout="@layout/layout_loader"
+                android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

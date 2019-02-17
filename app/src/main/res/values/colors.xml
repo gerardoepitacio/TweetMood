@@ -11,5 +11,9 @@
     <color name="colorLightGray">#AAB8C2</color>
     <color name="colorExtraLightGray">#E1E8ED</color>
     <color name="colorExtraLightGray2">#F5F8FA</color>
+    <color name="colorPrimary70">#B31DA1F2</color>
+    <color name="colorWhite70">#B3ffffff</color>
+    <color name="colorSeparator">#000</color>
+
 
 </resources>

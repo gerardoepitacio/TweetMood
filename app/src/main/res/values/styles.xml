@@ -5,7 +5,24 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="buttonStyle">@style/mainButtonStyle</item>
     </style>
 
+    <style name="mainButtonStyle" parent="Theme.AppCompat">
+        <item name="android:background">@drawable/button_background_selector</item>
+        <item name="android:textColor">@color/main_button_text_color</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="mainEditTextStyle" parent="Theme.AppCompat">
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppTheme.LinearProgress">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
 </resources>
