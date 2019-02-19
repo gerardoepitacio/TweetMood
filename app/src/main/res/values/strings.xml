@@ -3,7 +3,14 @@
     <string name="twitter_username">Twitter username</string>
     <string name="search_tweets">Search Tweets</string>
     <string name="allowed_characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_</string>
-    <string name="msg_introduce_username">Please introduce a valid Twitter username</string>
+    <string name="msg_introduce_username">Please introduce a valid Twitter account and pick Search Tweets.</string>
     <string name="msg_searching_tweets">Searching tweets for @username</string>
-    <string name="most_recent_tweets_by_username">Most recent Tweets by @username</string>
+    <string name="username_tweets_placeholder">Most recent Tweets by \@%1s</string>
+    <string name="request_username_placeholder">Requesting Tweets of \@%1s…</string>
+    <string name="accept">Accept</string>
+
+    <string name="no_internet_conection">Internet connection not found.</string>
+    <string name="service_not_available">Service unavailable</string>
+    <string name="verify_internet_conection">Services couldn\'t reached, please check your Internet connection.</string>
+    <string name="user_not_found_placeholder">Account \@%1s not found, please try with another one.</string>
 </resources>

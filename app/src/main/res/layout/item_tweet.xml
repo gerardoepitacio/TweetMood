@@ -4,12 +4,31 @@
                                                    android:layout_height="wrap_content"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
+                                                   android:paddingStart="16dp"
+                                                   android:paddingEnd="16dp"
                                                    android:layout_margin="5dp">
 
     <TextView
+            android:id="@+id/tvTweetNumber"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            tools:text="10"
+            android:background="@drawable/rounded_background"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
             android:id="@+id/tvTweetContent"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit."
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit."
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTweetNumber"
+            app:layout_constraintEnd_toEndOf="parent"
 
     />
 
