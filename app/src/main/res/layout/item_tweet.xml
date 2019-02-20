@@ -7,16 +7,14 @@
                                                    android:paddingStart="16dp"
                                                    android:paddingEnd="16dp"
                                                    android:layout_margin="5dp">
-
-    <TextView
-            android:id="@+id/tvTweetNumber"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:gravity="center"
-            tools:text="10"
-            android:background="@drawable/rounded_background"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
     />
 
@@ -26,10 +24,10 @@
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur diam metus, at aliquam velit."
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
+            android:transitionName="tweetContent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvTweetNumber"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile"
             app:layout_constraintEnd_toEndOf="parent"
-
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

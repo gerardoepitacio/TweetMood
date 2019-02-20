@@ -5,9 +5,10 @@ buildscript {
     ext.nav_version = "1.0.0-beta01"
     ext.graddle_version = "3.3.0"
     repositories {
+        mavenCentral()
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$graddle_version"

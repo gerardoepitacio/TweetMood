@@ -13,4 +13,10 @@
     <string name="service_not_available">Service unavailable</string>
     <string name="verify_internet_conection">Services couldn\'t reached, please check your Internet connection.</string>
     <string name="user_not_found_placeholder">Account \@%1s not found, please try with another one.</string>
+    <string name="issues_feching_tweets_placeholder">We had some issues retrieving \@%1s Tweets.</string>
+    <string name="analyzing_twet">Analyzing Tweet…</string>
+    <string name="analysis_result">Analysis result</string>
+    <string name="happy_tweet">HAPPY TWEET</string>
+    <string name="neutral_tweet">NEUTRAL TWEET</string>
+    <string name="sad_tweet">SAD TWEET</string>
 </resources>

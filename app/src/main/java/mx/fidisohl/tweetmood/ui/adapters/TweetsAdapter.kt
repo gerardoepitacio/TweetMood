@@ -1,14 +1,16 @@
 package mx.fidisohl.tweetmood.ui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_tweet.view.*
 import mx.fidisohl.tweetmood.models.TweetModel
+import mx.fidisohl.tweetmood.utils.TweetMoodApp
 
 
-class TweetsAdapter(val context: Context, private val callback: (TweetModel, Int) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<TweetsAdapter.TweetViewHolder>() {
+class TweetsAdapter(private val callback: (TweetModel, View) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<TweetsAdapter.TweetViewHolder>() {
 
     private var tweets: List<TweetModel>? = null
 
@@ -29,19 +31,23 @@ class TweetsAdapter(val context: Context, private val callback: (TweetModel, Int
     }
 
     override fun onBindViewHolder(holder: TweetViewHolder, position: Int) =
-        holder.bindEvaluation(tweets!![position], position, callback)
+        holder.bindEvaluation(tweets!![position], callback)
     class TweetViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         fun bindEvaluation(
             tweet: TweetModel,
-            position: Int,
-            callback: (TweetModel, Int) -> Unit
+            callback: (TweetModel, View) -> Unit
         ) {
             itemView.setOnClickListener {
-                callback(tweet, this.adapterPosition)
+                callback(tweet, itemView.tvTweetContent)
             }
             itemView.tvTweetContent.text = tweet.text
-            itemView.tvTweetNumber.text = (position + 1).toString()
+
+            // TODO add a pleceholder image
+            Glide.with(TweetMoodApp.appContext)
+                .load(tweet.user?.profile_image_url_https)
+                .apply(RequestOptions.circleCropTransform())
+                .into(itemView.imgProfile)
 
         }
     }

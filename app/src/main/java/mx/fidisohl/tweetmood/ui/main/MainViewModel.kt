@@ -15,11 +15,11 @@ import mx.fidisohl.tweetmood.models.TweetModel
 
 class MainViewModel : ViewModel() {
 
-    val username = ObservableField<String>("")
+    val username = ObservableField<String>("gerardoepitacio")
     val networkCalls = NetworkRequest()
     val tweetList = MutableLiveData<List<TweetModel>>()
 
-    fun btnMainClick(view: View){
+    fun btnMainClick(view: View) {
         ResourceGenerator.TWITTER_RESOURCES.getUserTweets(username.get()!!).enqueue(
             object: CallbackNetworkStatusHandler<List<TweetModel>>(networkCalls){
                 override fun success(data: List<TweetModel>) {

@@ -1,10 +1,9 @@
-package mx.fidisohl.tweetmood
+package mx.fidisohl.tweetmood.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.Observable
 import androidx.lifecycle.Observer
@@ -12,18 +11,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_loader.*
-import mx.fidisohl.tweetmood.api.GeneralCallback
-import mx.fidisohl.tweetmood.api.ResourceGenerator.Companion.GOOGLE_RESOURCES
+import mx.fidisohl.tweetmood.BR
+import mx.fidisohl.tweetmood.R
 import mx.fidisohl.tweetmood.databinding.ActivityMainBinding
 import mx.fidisohl.tweetmood.models.ENetworkStatus
 import mx.fidisohl.tweetmood.models.NetworkRequest
 import mx.fidisohl.tweetmood.models.TweetModel
-import mx.fidisohl.tweetmood.models.google.AnalysisResponse
-import mx.fidisohl.tweetmood.models.google.Document
-import mx.fidisohl.tweetmood.models.google.RequestSentimentAnalysisData
 import mx.fidisohl.tweetmood.ui.adapters.TweetsAdapter
-import mx.fidisohl.tweetmood.ui.main.MainViewModel
-import retrofit2.Call
+import mx.fidisohl.tweetmood.ui.analysis.AnalysisActivity
+import mx.fidisohl.tweetmood.utils.Constants.Transitions.SHARED_ELEMENT_NAME
+import mx.fidisohl.tweetmood.utils.ViewUtils
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,34 +29,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var rvTweets: RecyclerView
     private val adapter: TweetsAdapter by lazy {
-        TweetsAdapter(this@MainActivity) { tweetSelected: TweetModel, position: Int ->
-            Log.d("", tweetSelected.toString())
-            // TODO Start tweet content analysis
-            GOOGLE_RESOURCES.analyseSentiment(RequestSentimentAnalysisData(Document(tweetSelected.text)))
-                .enqueue(object: GeneralCallback<AnalysisResponse?>(){
-                    override fun success(data: AnalysisResponse?) {
-                        Log.d("--->", data?.toString())
-                        if (data != null) {
-                            val score = data.documentSentiment.score
-                            if (score > 0.25) {
-                                Toast.makeText(this@MainActivity, "POSITIVE", Toast.LENGTH_LONG).show()
-                            } else if (score > -0.75) {
-                                Toast.makeText(this@MainActivity, "NEUTRAL", Toast.LENGTH_LONG).show()
-                            } else {
-                                Toast.makeText(this@MainActivity, "NEGATIVE", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-
-                    override fun controlNoSuccessful(responseCode: Int) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onFailure(call: Call<AnalysisResponse?>, t: Throwable) {
-                        super.onFailure(call, t)
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                })
+        TweetsAdapter{ tweetSelected: TweetModel, view: View->
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity, view, SHARED_ELEMENT_NAME)
+            startActivity(AnalysisActivity.getActivityIntent(this@MainActivity, tweetSelected), options.toBundle())
         }
     }
 
@@ -88,11 +62,13 @@ class MainActivity : AppCompatActivity() {
         viewModel.networkCalls.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 if (propertyId == BR.eRequestStatus) {
+
                     val networkCall = sender as NetworkRequest
                     when (networkCall.eRequestStatus) {
                         ENetworkStatus.NONE -> {}
                         ENetworkStatus.PROCESS -> {
                             loaderText.text = resources.getString(R.string.request_username_placeholder, viewModel.username.get())
+                            ViewUtils.hideSoftwKeyboard(this@MainActivity)
                         }
                         ENetworkStatus.SUCCESS -> {
                             setTweetsOwner()
@@ -136,6 +112,9 @@ class MainActivity : AppCompatActivity() {
         tvUserNameTweets.visibility = View.GONE
         if (networkCall.responseCode != null) {
             when (networkCall.responseCode) {
+                401 -> {
+                    tvNotData.text = resources.getString(R.string.issues_feching_tweets_placeholder, viewModel.username.get())
+                }
                 404 -> {
                     tvNotData.text = resources.getString(R.string.user_not_found_placeholder, viewModel.username.get())
                 }
