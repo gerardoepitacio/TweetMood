@@ -2,6 +2,7 @@
 Analyzes the latest Tweets of a user and tells you if the Tweet contains a Sad, Neutral or Happy sentiment, all this with gorgeous emojis.
 
 # Main feactures
+* Made with [Kotlin](https://kotlinlang.org/)
 * MVVM architecture pattern as the latest [Google architecture guidelines to create Android Apps](https://developer.android.com/jetpack/docs/guide).
 * Supports mainly versions 19 to 28.
 * Portrait orientation only.
