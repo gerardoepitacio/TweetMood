@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         init()
     }
@@ -95,15 +96,15 @@ class MainActivity : AppCompatActivity() {
         tvUserNameTweets.visibility = View.VISIBLE
     }
 
-    fun showErrorMessage(message: String) {
+    private fun showErrorMessage(message: String) {
         tvNotData.text = message
     }
 
-    fun showServiceNotAvalableMsg() {
+    private fun showServiceNotAvalableMsg() {
         showErrorMessage(resources.getString(R.string.service_not_available))
     }
 
-    fun showServerNotReachedMsg() {
+    private fun showServerNotReachedMsg() {
         showErrorMessage(resources.getString(R.string.verify_internet_conection))
     }
 

@@ -19,4 +19,5 @@
     <string name="happy_tweet">HAPPY TWEET</string>
     <string name="neutral_tweet">NEUTRAL TWEET</string>
     <string name="sad_tweet">SAD TWEET</string>
+    <string name="username_photo_profile">Username photo profile</string>
 </resources>

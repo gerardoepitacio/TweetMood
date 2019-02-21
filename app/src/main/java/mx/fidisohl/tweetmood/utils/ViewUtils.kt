@@ -23,7 +23,8 @@ object ViewUtils {
         }
     }
 
-    private fun getEmojiByUnicode(unicode: Int): String {
+    @JvmStatic
+    fun getEmojiByUnicode(unicode: Int): String {
         return String(Character.toChars(unicode))
     }
 
