@@ -102,7 +102,7 @@
                         android:id="@+id/layoutMessages"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="@dimen/mas_layout_messages_margin_top"
                         app:layout_constraintTop_toBottomOf="@+id/layoutSeparator"
                         android:padding="8dp"
                         android:visibility="@{vm.tweetsListEmpty() ? View.VISIBLE : View.GONE}"
@@ -126,7 +126,7 @@
                             android:layout_marginEnd="30dp"
                             android:text="@string/msg_introduce_username"
                             android:textAlignment="center"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/mas_messages_text_size"
                             app:layout_constraintTop_toBottomOf="@+id/imgInfo"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

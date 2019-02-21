@@ -17,7 +17,9 @@ import mx.fidisohl.tweetmood.databinding.ActivityAnalysisBinding
 import mx.fidisohl.tweetmood.models.ENetworkStatus
 import mx.fidisohl.tweetmood.models.NetworkRequest
 import mx.fidisohl.tweetmood.models.TweetModel
+import mx.fidisohl.tweetmood.utils.Constants
 import mx.fidisohl.tweetmood.utils.TweetMoodApp
+import mx.fidisohl.tweetmood.utils.ViewUtils
 
 class AnalysisActivity : AppCompatActivity() {
 
@@ -41,7 +43,7 @@ class AnalysisActivity : AppCompatActivity() {
             if (it != null) {
                 binding.result = it
             } else {
-                // TODO manage error result on analysis
+                showGeneralError()
             }
         })
 
@@ -49,6 +51,7 @@ class AnalysisActivity : AppCompatActivity() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 if (propertyId == BR.eRequestStatus) {
                     val networkCall = sender as NetworkRequest
+                    binding.vm = viewModel
                     when (networkCall.eRequestStatus) {
                         ENetworkStatus.NONE -> {}
                         ENetworkStatus.PROCESS -> {
@@ -56,8 +59,7 @@ class AnalysisActivity : AppCompatActivity() {
                         }
                         ENetworkStatus.SUCCESS -> {}
                         ENetworkStatus.FAILED -> {
-                            // TODO manage request errors
-//                            manageErrors(networkCall)
+                            showGeneralError()
                         }
                     }
                 }
@@ -83,5 +85,10 @@ class AnalysisActivity : AppCompatActivity() {
             intent.putExtra(KEY_TWEET, tweet)
             return intent
         }
+    }
+
+    private fun showGeneralError() {
+        tvEmoji.text = ViewUtils.getEmojiByUnicode(Constants.Emojis.EMOJI_EMBARRASING)
+        tvResult.text = resources.getText(R.string.couldnt_analyze_tweet)
     }
 }

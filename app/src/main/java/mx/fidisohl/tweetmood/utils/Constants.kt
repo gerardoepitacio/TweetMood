@@ -23,6 +23,7 @@ object Constants {
         const val EMOJI_HAPPY = 0x1F603
         const val EMOJI_NEUTRAL = 0x1F610
         const val EMOJI_SAD = 0x1F614
+        const val EMOJI_EMBARRASING = 0x1F648
     }
 
     object Transitions {

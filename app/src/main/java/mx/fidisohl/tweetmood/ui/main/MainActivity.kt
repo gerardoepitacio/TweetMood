@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             binding.vm = viewModel
             if (!it.isNullOrEmpty()) {
                 adapter.showTweets(it)
+                rvTweets.smoothScrollToPosition(0)
             }
         })
 
@@ -125,5 +126,6 @@ class MainActivity : AppCompatActivity() {
             showServerNotReachedMsg()
         }
     }
+    
 
 }

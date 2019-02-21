@@ -13,7 +13,7 @@
         <item name="android:background">@drawable/button_background_selector</item>
         <item name="android:textColor">@color/main_button_text_color</item>
         <item name="android:padding">10dp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/ars_default_text_size</item>
         <item name="android:gravity">center</item>
     </style>
 

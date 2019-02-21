@@ -17,7 +17,6 @@ import retrofit2.Call
 class TweetAnalysisViewModel : ViewModel() {
 
     val networkCalls = NetworkRequest()
-    val tweetList = MutableLiveData<List<TweetModel>>()
     val analysisResponse = MutableLiveData<AnalysisResponse>()
 
     fun analyzeTweet(tweet: TweetModel){

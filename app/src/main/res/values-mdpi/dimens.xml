@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="ars_profile_image_margin_top">5dp</dimen>
+    <dimen name="ars_default_margin">5dp</dimen>
+    <dimen name="ars_profile_width">50dp</dimen>
+    <dimen name="ars_default_text_size">14sp</dimen>
+    <dimen name="ars_username_text_size">14sp</dimen>
+    <dimen name="ars_screen_username_text_size">12sp</dimen>
+    <dimen name="ars_tweet_content_text_size">14sp</dimen>
+    <dimen name="ars_analysis_result_padding">3dp</dimen>
+    <dimen name="ars_emoji_size">30sp</dimen>
+    <dimen name="ars_analysis_result_text_size">16sp</dimen>
+    <dimen name="ars_loader_margin_top">30dp</dimen>
+    <dimen name="ars_button_main">20dp</dimen>
+    <dimen name="mas_layout_messages_margin_top">20dp</dimen>
+    <dimen name="mas_messages_text_size">14sp</dimen>
+</resources>

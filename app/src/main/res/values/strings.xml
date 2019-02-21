@@ -20,4 +20,6 @@
     <string name="neutral_tweet">NEUTRAL TWEET</string>
     <string name="sad_tweet">SAD TWEET</string>
     <string name="username_photo_profile">Username photo profile</string>
+    <string name="analysing_tweet_mood">Analysing Tweet mood…</string>
+    <string name="couldnt_analyze_tweet">Couldn\'t analyze Tweet</string>
 </resources>

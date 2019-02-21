@@ -53,6 +53,9 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    // Emoji compat support
+    implementation "androidx.emoji:emoji-appcompat:1.0.0"
+    implementation "androidx.emoji:emoji-bundled:1.0.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'

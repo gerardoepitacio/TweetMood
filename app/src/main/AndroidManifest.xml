@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <meta-data android:name="fontProviderRequests" android:value="Noto Color Emoji Compat"/>
+
     <application
             android:name=".utils.TweetMoodApp"
             android:allowBackup="true"
@@ -15,10 +17,12 @@
 
         <activity android:name=".ui.analysis.AnalysisActivity"
                   android:label="@string/analysis_result"
+                  android:screenOrientation="portrait"
         >
         </activity>
         <activity android:name=".ui.main.MainActivity"
                   android:theme="@style/AppThemeWhite.SplashActivity"
+                  android:screenOrientation="portrait"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

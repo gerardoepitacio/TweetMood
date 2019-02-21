@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_tweet.view.*
+import mx.fidisohl.tweetmood.R
 import mx.fidisohl.tweetmood.models.TweetModel
 import mx.fidisohl.tweetmood.utils.TweetMoodApp
 
@@ -43,9 +44,9 @@ class TweetsAdapter(private val callback: (TweetModel, View) -> Unit) : androidx
             }
             itemView.tvTweetContent.text = tweet.text
 
-            // TODO add a pleceholder image
             Glide.with(TweetMoodApp.appContext)
                 .load(tweet.user?.profile_image_url_https)
+                .placeholder(R.drawable.ic_person)
                 .apply(RequestOptions.circleCropTransform())
                 .into(itemView.imgProfile)
 
